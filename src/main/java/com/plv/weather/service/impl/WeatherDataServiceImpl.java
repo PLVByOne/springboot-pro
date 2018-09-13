@@ -27,11 +27,12 @@ import com.plv.weather.vo.WeatherResponse;
 */
 @Service
 public class WeatherDataServiceImpl implements WeatherDataService {
+	
 	private final static Logger logger = LoggerFactory.getLogger(WeatherDataServiceImpl.class);
 	
 	private static final String WEATHER_URI="http://wthrcdn.etouch.cn/weather_mini?";
 
-	private static final long TIME_OUT = 10L;//1800
+	private static final long TIME_OUT = 1800L;//1800L
 	
 	@Autowired
 	private RestTemplate restTemplate;
@@ -59,8 +60,10 @@ public class WeatherDataServiceImpl implements WeatherDataService {
 		ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
 		//先查缓存，缓存有的取缓存中的数据
 		if(stringRedisTemplate.hasKey(key)) {
+			logger.info("Redis has data");
 			strBody = ops.get(key);
 		}else {
+			logger.info("Redis don`t has data");
 			//缓存没有，再调用服务接口获取
 			ResponseEntity<String> respString = restTemplate.getForEntity(uri, String.class);
 			
@@ -75,7 +78,8 @@ public class WeatherDataServiceImpl implements WeatherDataService {
 		try {
 			resp = mapper.readValue(strBody, WeatherResponse.class);
 		} catch (IOException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			logger.error("Error!",e);
 		}
 		
 		return resp;
