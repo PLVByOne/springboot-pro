@@ -1,0 +1,43 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.5.RELEASE'
+	}
+	repositories {
+		mavenLocal()
+		maven { url 'https://repo.spring.io/snapshot' }
+		maven { url 'https://repo.spring.io/milestone' }
+		maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.plv'
+version = '1.0.0'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenLocal()
+	maven { url 'https://repo.spring.io/snapshot' }
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	
+	//Apache HttpClient https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+	compile('org.apache.httpcomponents:httpclient:4.5.3')
+	
+	//Redis
+	compile('org.springframework.boot:spring-boot-starter-data-redis')
+	
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
