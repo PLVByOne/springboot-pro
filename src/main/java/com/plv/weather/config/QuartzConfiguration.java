@@ -13,7 +13,7 @@ import com.plv.weather.job.WeatherDataSyncJob;
 @Configuration
 public class QuartzConfiguration {
 
-	private static final int DO_TIME = 1800;
+	private static final int DO_TIME = 1800;//更新频率
 	//JobDetail
 	@Bean
 	public JobDetail weatherDataSyncJobDetail() {

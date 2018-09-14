@@ -42,5 +42,8 @@ dependencies {
 	//Quartz
 	compile('org.springframework.boot:spring-boot-starter-quartz')
 	
+	//add Spring Boot Thymeleaf Starter 
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

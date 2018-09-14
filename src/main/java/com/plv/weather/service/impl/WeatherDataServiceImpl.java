@@ -85,5 +85,37 @@ public class WeatherDataServiceImpl implements WeatherDataService {
 		return resp;
 	}
 
+	/* 简单描述该方法的实现功能
+	 * @see com.plv.weather.service.WeatherDataService#syncDataByCityId(java.lang.String)
+	 */
+	@Override
+	public void syncDataByCityId(String cityId) {
+		String uri = WEATHER_URI+"citykey="+cityId;
+		this.saveWeatherData(uri);
+		
+	}
+	
+	/**
+	 * <p>Title: saveWeatherData</p>  
+	 * <p>Description: 把天气数据放到缓存中</p>  
+	 * @author yaohp  
+	 * @date 2018年9月14日
+	 * @param uri
+	 */
+	private void saveWeatherData(String uri) {
+		String key = uri;
+		String strBody = null;
+		ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
+		//缓存没有，再调用服务接口获取
+		ResponseEntity<String> respString = restTemplate.getForEntity(uri, String.class);
+		
+		if(respString.getStatusCodeValue() == 200) {
+			strBody = respString.getBody();
+		}
+		
+		//数据写入缓存
+		ops.set(key, strBody, TIME_OUT, TimeUnit.SECONDS);
+	}
+
 }
 

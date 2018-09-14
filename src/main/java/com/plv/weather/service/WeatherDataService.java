@@ -7,7 +7,7 @@ import com.plv.weather.vo.WeatherResponse;
 * <p>Description: </p>
 * <p>Copyright: Copyright (c) 2018</p>
 * @author yaohp 837965182@qq.com
-* @date 2018Äê9ÔÂ13ÈÕ ÏÂÎç2:39:49
+* @date 2018ï¿½ï¿½9ï¿½ï¿½13ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½2:39:49
 * @version 1.0  
 *@instructions:
 */
@@ -15,9 +15,9 @@ public interface WeatherDataService {
 
 	/**
 	 * <p>Title: getDataByCityId</p>  
-	 * <p>Description: ¸ù¾İ³ÇÊĞID²éÑ¯ÌìÆøÊı¾İ</p>  
+	 * <p>Description: ï¿½ï¿½ï¿½İ³ï¿½ï¿½ï¿½IDï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>  
 	 * @author yaohp  
-	 * @date 2018Äê9ÔÂ13ÈÕ
+	 * @date 2018ï¿½ï¿½9ï¿½ï¿½13ï¿½ï¿½
 	 * @param cityId
 	 * @return
 	 */
@@ -25,12 +25,21 @@ public interface WeatherDataService {
 	
 	/**
 	 * <p>Title: getDataByCityName</p>  
-	 * <p>Description: ¸ù¾İ³ÇÊĞÃû³Æ²éÑ¯ÌìÆøÊı¾İ</p>  
+	 * <p>Description: ï¿½ï¿½ï¿½İ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>  
 	 * @author yaohp  
-	 * @date 2018Äê9ÔÂ13ÈÕ
+	 * @date 2018ï¿½ï¿½9ï¿½ï¿½13ï¿½ï¿½
 	 * @param cityName
 	 * @return
 	 */
 	WeatherResponse getDataByCityName(String cityName);
+	
+	/**
+	 * <p>Title: syncDataByCityId</p>  
+	 * <p>Description: æ ¹æ®åŸå¸‚IDåŒæ­¥å¤©æ°”</p>  
+	 * @author yaohp  
+	 * @date 2018å¹´9æœˆ14æ—¥
+	 * @param cityId
+	 */
+	void syncDataByCityId(String cityId);
 }
 
